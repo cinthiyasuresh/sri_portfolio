@@ -1,4 +1,4 @@
-export const RESUME_URL = "/Cinthiya-Sri-S-Resume.pdf";
+export const RESUME_URL = `${import.meta.env.BASE_URL}Cinthiya-Sri-S-Resume.pdf`;
 
 export async function resumeExists(url = RESUME_URL) {
   try {

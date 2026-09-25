@@ -7,7 +7,7 @@ export const profile = {
   careerObjective:
     "To obtain a position in a growth-oriented organization where I can use my Computer Science background and current studies in Artificial Intelligence to develop innovative solutions and improve my technical skills.",
   resume: {
-    url: "/Cinthiya-Sri-S-Resume.pdf",
+    url: `${import.meta.env.BASE_URL}Cinthiya-Sri-S-Resume.pdf`,
     label: "Download Resume",
   },
 };
