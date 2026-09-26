@@ -193,7 +193,7 @@ export default function Hero() {
               View My Projects
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
-            <ResumeButton />
+            <ResumeButton action="view" />
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold text-foreground shadow-card transition duration-200 hover:border-indigo-300 hover:text-indigo-600 active:scale-[0.98] dark:hover:border-indigo-400/40 dark:hover:text-indigo-300"
