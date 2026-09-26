@@ -43,7 +43,7 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={closeIfOpen}
-          className="flex items-center gap-2.5 font-display text-base font-bold tracking-tight"
+          className="flex shrink-0 items-center gap-2.5 font-display text-base font-bold tracking-tight"
           aria-label="Back to home"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-brand text-sm font-bold text-white shadow-card">
@@ -54,13 +54,13 @@ export default function Navbar() {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-0.5 xl:flex">
+        <ul className="hidden items-center gap-0 xl:flex">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
                 aria-current={active === link.id ? "true" : undefined}
-                className={`relative rounded-full px-2.5 py-2 text-sm font-medium transition-colors ${
+                className={`relative whitespace-nowrap rounded-full px-2 py-2 text-sm font-medium transition-colors ${
                   active === link.id
                     ? "text-indigo-600 dark:text-indigo-300"
                     : "text-foreground/70 hover:text-foreground"
@@ -79,7 +79,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <button
             type="button"
             onClick={toggleTheme}

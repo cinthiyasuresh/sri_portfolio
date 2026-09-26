@@ -34,7 +34,7 @@ export default function ResumeButton({ variant = "solid", action = "download", c
         target={isView ? "_blank" : undefined}
         rel={isView ? "noopener noreferrer" : undefined}
         aria-label={label}
-        className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-200 active:scale-[0.98] ${variantStyles[variant]}`}
+        className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition duration-200 active:scale-[0.98] ${variantStyles[variant]}`}
       >
         <ActionIcon className="h-4 w-4" aria-hidden="true" />
         {label}
