@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { profile } from "../data/profile.js";
 import ResumeButton from "./common/ResumeButton.jsx";
 import Badge from "./common/Badge.jsx";
@@ -74,9 +74,17 @@ function ProfileVisual() {
         >
           <div className="flex flex-col items-center px-8 pt-10 pb-8 text-center">
             <div className="relative">
-              <div className="absolute -inset-2 rounded-3xl bg-gradient-brand opacity-25 blur-lg" />
-              <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-brand text-white shadow-card-lg">
-                <Sparkles className="h-10 w-10" aria-hidden="true" />
+              <div className="absolute -inset-2 rounded-full bg-gradient-brand opacity-25 blur-lg" />
+              <div className="relative h-24 w-24 rounded-full bg-gradient-brand p-0.5 shadow-card-lg">
+                <img
+                  src={`${import.meta.env.BASE_URL}profile.jpg`}
+                  alt={profile.name}
+                  width={96}
+                  height={96}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full rounded-full object-cover"
+                />
               </div>
             </div>
             <h3 className="mt-6 font-display text-xl font-bold tracking-tight">{profile.name}</h3>
