@@ -16,6 +16,7 @@ export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "education", label: "Education" },
+  { id: "internship", label: "Internship" },
   { id: "skills", label: "Skills" },
   { id: "certifications", label: "Certifications" },
   { id: "projects", label: "Projects" },
@@ -73,6 +74,42 @@ export const education = [
     period: "2020 – 2022",
     score: "74%",
     location: "Trichy, Tamil Nadu",
+  },
+];
+
+export const internships = [
+  {
+    role: "SEO & Digital Marketing Internship",
+    company: "HodoLabs Technologies Pvt. Ltd.",
+    period: null,
+    location: null,
+    logo: "hodolabs-logo.png",
+    image: "seo_image.webp",
+    fallbackIcon: "search",
+    summary:
+      "Gained hands-on experience in Search Engine Optimization, keyword research, content optimization and search-focused content strategy, with practical exposure to how SEO integrates with web development and digital marketing to support online business growth.",
+    responsibilities: [
+      "Relevant keyword research",
+      "Search intent analysis",
+      "SEO-friendly content ideas",
+      "On-page element optimization",
+      "Competitor research",
+      "Website visibility improvement",
+    ],
+    tools: [
+      "SEO",
+      "Keyword Research",
+      "Google Search Concepts",
+      "On-Page SEO",
+      "Content Strategy",
+      "HTML",
+      "Web Analytics",
+      "Competitor Research",
+    ],
+    takeaways:
+      "Strengthened my understanding of search engines, content strategy, website optimization, keyword targeting and data-driven digital marketing.",
+    approach:
+      "HodoLabs follows a structured approach involving discovery, planning, design, development, testing, deployment and continuous improvement, which helped me understand how SEO fits into the broader website-development lifecycle.",
   },
 ];
 

@@ -10,6 +10,8 @@ import {
   Trophy,
   Medal,
   Award,
+  Search,
+  Briefcase,
 } from "lucide-react";
 
 const map = {
@@ -24,6 +26,8 @@ const map = {
   trophy: Trophy,
   medal: Medal,
   award: Award,
+  search: Search,
+  briefcase: Briefcase,
 };
 
 export function getIcon(name) {
