@@ -277,6 +277,7 @@ export const contact = {
   githubHandle: "cinthiyasuresh",
   linkedin: "https://www.linkedin.com/in/cinthiya-sri-s-51251841b/",
   linkedinHandle: "cinthiya-sri-s",
+  formEndpoint: "https://formspree.io/f/xppwynrq",
 };
 
 export const declaration =

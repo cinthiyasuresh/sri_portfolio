@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { CheckCircle2, Mail, Send, XCircle } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, Send, XCircle } from "lucide-react";
 import { contact } from "../data/profile.js";
+import { submitContactForm } from "../lib/contactForm.js";
 import Section from "./common/Section.jsx";
 import SectionHeading from "./common/SectionHeading.jsx";
 import { Reveal } from "./common/Reveal.jsx";
@@ -30,12 +31,18 @@ const inputClass =
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const isSending = status === "sending";
 
   function onChange(name) {
     return (e) => {
       setForm((prev) => ({ ...prev, [name]: e.target.value }));
       if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
+      if (status !== "idle") {
+        setStatus("idle");
+        setErrorMessage("");
+      }
     };
   }
 
@@ -51,10 +58,21 @@ export default function Contact() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    if (isSending) return;
     if (!validate()) return;
-    setStatus("ready");
+
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      await submitContactForm(form);
+      setStatus("success");
+    } catch (err) {
+      setErrorMessage(err.message);
+      setStatus("error");
+    }
   }
 
   return (
@@ -190,22 +208,36 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-white shadow-card-lg transition duration-200 hover:brightness-110 active:scale-[0.99]"
+                  disabled={isSending}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-white shadow-card-lg transition duration-200 hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:brightness-100"
                 >
-                  <Send className="h-4 w-4" aria-hidden="true" />
-                  Send Message
+                  {isSending ? (
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  ) : (
+                    <Send className="h-4 w-4" aria-hidden="true" />
+                  )}
+                  {isSending ? "Sending..." : "Send Message"}
                 </button>
 
-                {status === "ready" && (
+                {status === "success" && (
                   <p
                     role="status"
                     className="flex items-center gap-2 rounded-xl border border-emerald-200/60 bg-emerald-500/10 px-4 py-3 text-xs font-medium text-emerald-700 dark:text-emerald-400"
                   >
                     <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    Message validated. An email service can be connected here later.
+                    Thanks! Your message has been sent. I will get back to you soon.
                   </p>
                 )}
-                {Object.values(errors).some(Boolean) && status !== "ready" && (
+                {status === "error" && (
+                  <p
+                    role="alert"
+                    className="flex items-center gap-2 rounded-xl border border-rose-200/60 bg-rose-500/10 px-4 py-3 text-xs font-medium text-rose-600 dark:text-rose-400"
+                  >
+                    <XCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {errorMessage}
+                  </p>
+                )}
+                {Object.values(errors).some(Boolean) && status === "idle" && (
                   <p
                     role="alert"
                     className="flex items-center gap-2 rounded-xl border border-rose-200/60 bg-rose-500/10 px-4 py-3 text-xs font-medium text-rose-600 dark:text-rose-400"
