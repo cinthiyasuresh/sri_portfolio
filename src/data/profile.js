@@ -235,10 +235,10 @@ export const reference = {
 
 export const contact = {
   email: "cinthiyasuresh@gmail.com",
-  phone: "9976923062",
-  phoneDisplay: "+91 99769 23062",
-  location: "Srirangam, Trichy, Tamil Nadu, India",
-  address: ["No. 5, S.V. Chari Street,", "Gandhi Nagar,", "Srirangam,", "Trichy-6"],
+  github: "https://github.com/cinthiyasuresh",
+  githubHandle: "cinthiyasuresh",
+  linkedin: "https://www.linkedin.com/in/cinthiya-sri-s-51251841b/",
+  linkedinHandle: "cinthiya-sri-s",
 };
 
 export const declaration =

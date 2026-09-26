@@ -1,14 +1,27 @@
 import { useState } from "react";
-import { CheckCircle2, Mail, MapPin, Phone, Send, XCircle } from "lucide-react";
+import { CheckCircle2, Mail, Send, XCircle } from "lucide-react";
 import { contact } from "../data/profile.js";
 import Section from "./common/Section.jsx";
 import SectionHeading from "./common/SectionHeading.jsx";
 import { Reveal } from "./common/Reveal.jsx";
+import { GitHubIcon, LinkedInIcon } from "./common/icons.jsx";
 
 const contactCards = [
-  { label: "Email", value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
-  { label: "Phone", value: contact.phone, href: null, icon: Phone },
-  { label: "Location", value: contact.location, href: null, icon: MapPin },
+  { label: "Email", value: contact.email, href: `mailto:${contact.email}`, icon: <Mail className="h-5 w-5" /> },
+  {
+    label: "GitHub",
+    value: contact.githubHandle,
+    href: contact.github,
+    external: true,
+    icon: <GitHubIcon className="h-5 w-5" />,
+  },
+  {
+    label: "LinkedIn",
+    value: contact.linkedinHandle,
+    href: contact.linkedin,
+    external: true,
+    icon: <LinkedInIcon className="h-5 w-5" />,
+  },
 ];
 
 const inputClass =
@@ -55,11 +68,11 @@ export default function Contact() {
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-5">
-            {contactCards.map(({ label, value, href, icon: Icon }) => (
+            {contactCards.map(({ label, value, href, external, icon }) => (
               <Reveal key={label} delay={0.05}>
                 <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-card">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-brand text-white shadow-card">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                    {icon}
                   </span>
                   <div className="min-w-0">
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted">
@@ -68,6 +81,8 @@ export default function Contact() {
                     {href ? (
                       <a
                         href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noreferrer" : undefined}
                         className="mt-1 block truncate text-sm font-semibold transition-colors hover:text-indigo-600 dark:hover:text-indigo-300"
                       >
                         {value}
@@ -79,24 +94,6 @@ export default function Contact() {
                 </div>
               </Reveal>
             ))}
-
-            <Reveal delay={0.1}>
-              <div className="rounded-2xl border border-border bg-surface-2/50 p-5">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-indigo-500" aria-hidden="true" />
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-                    Address
-                  </p>
-                </div>
-                <address className="mt-2 not-italic leading-relaxed text-sm text-foreground">
-                  {contact.address.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
-              </div>
-            </Reveal>
           </div>
 
           <Reveal delay={0.12}>
