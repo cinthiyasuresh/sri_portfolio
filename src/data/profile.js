@@ -214,6 +214,7 @@ export const projects = [
       "OpenCV",
     ],
     tech: ["Python", "OpenCV", "Computer Vision", "AI"],
+    image: "face_frame.webp",
     links: { view: null, github: null },
   },
   {

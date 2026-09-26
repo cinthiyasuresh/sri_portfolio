@@ -1,4 +1,4 @@
-import { CalendarDays, Check, ExternalLink, Scale, Search, GitBranch } from "lucide-react";
+import { CalendarDays, Check, ExternalLink, Scale, GitBranch } from "lucide-react";
 import { projects } from "../data/profile.js";
 import Section from "./common/Section.jsx";
 import SectionHeading from "./common/SectionHeading.jsx";
@@ -6,61 +6,6 @@ import { Reveal } from "./common/Reveal.jsx";
 import Badge from "./common/Badge.jsx";
 import PlaceholderButton from "./common/PlaceholderButton.jsx";
 import { GitHubIcon } from "./common/icons.jsx";
-
-function VisionVisual() {
-  return (
-    <div className="relative flex aspect-square items-center justify-center">
-      <svg viewBox="0 0 240 240" className="h-full w-full" aria-hidden="true">
-        <rect
-          x="20"
-          y="20"
-          width="200"
-          height="200"
-          rx="16"
-          fill="none"
-          stroke="currentColor"
-          className="text-indigo-500/30"
-          strokeWidth="1.5"
-          strokeDasharray="4 6"
-        />
-        <circle
-          cx="120"
-          cy="105"
-          r="46"
-          fill="none"
-          stroke="url(#face-grad)"
-          strokeWidth="3"
-          className="text-indigo-500/70"
-        />
-        <defs>
-          <linearGradient id="face-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#3b82f6" />
-          </linearGradient>
-        </defs>
-        <circle cx="103" cy="95" r="3.5" fill="#6366f1" />
-        <circle cx="137" cy="95" r="3.5" fill="#6366f1" />
-        <path d="M108 120 q12 10 24 0" fill="none" stroke="#6366f1" strokeWidth="3" strokeLinecap="round" />
-      </svg>
-
-      <div className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-surface-2 px-2.5 py-1 text-[10px] font-semibold text-muted">
-        <Search className="h-3 w-3" aria-hidden="true" />
-        Face Detect
-      </div>
-      <div className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-surface-2 px-2.5 py-1 text-[10px] font-semibold text-muted">
-        OpenCV
-      </div>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-gradient-brand px-3 py-1 text-[10px] font-semibold text-white shadow-card">
-        Frame Shape Match
-      </div>
-
-      <span className="absolute bottom-3 left-3 h-6 w-6 rounded-tl-lg border-l-2 border-t-2 border-indigo-500/50" />
-      <span className="absolute bottom-3 right-3 h-6 w-6 rounded-tr-lg border-r-2 border-t-2 border-indigo-500/50" />
-      <span className="absolute top-3 left-3 h-6 w-6 rounded-tl-lg border-l-2 border-t-2 border-blue-500/50" />
-      <span className="absolute top-3 right-3 h-6 w-6 rounded-tr-lg border-r-2 border-t-2 border-blue-500/50" />
-    </div>
-  );
-}
 
 const comparisonTopics = [
   { name: "Development workflow", icon: GitBranch },
@@ -148,7 +93,12 @@ export default function Projects() {
                   aria-hidden="true"
                 />
                 <div className="relative p-7 sm:p-10">
-                  <VisionVisual />
+                  <img
+                    src={`${import.meta.env.BASE_URL}${faceProject.image}`}
+                    alt={`${faceProject.title} preview`}
+                    className="h-auto w-full object-contain"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </article>
